@@ -1,0 +1,380 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   Ria Portfolio — Olive Garden Feast palette
+   Black Forest #283618 · Olive Leaf #606c38
+   Cornsilk #fefae0 · Light Caramel #dda15e · Copper #bc6c25
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+:root {
+  /* ── Black Forest #283618 — deep army olive, midnight workshop ── */
+  --background: oklch(0.17 0.054 133);
+
+  /* ── Cornsilk #fefae0 — creamy pale yellow, warm as candlelight ── */
+  --foreground: oklch(0.982 0.026 98);
+
+  /* Elevated olive panels — between Black Forest and Olive Leaf */
+  --card: oklch(0.22 0.050 132);
+  --card-foreground: oklch(0.982 0.026 98);
+
+  --popover: oklch(0.20 0.051 132);
+  --popover-foreground: oklch(0.982 0.026 98);
+
+  /* ── Copper #bc6c25 — reddish-brown, glowing fireplace ── */
+  --primary: oklch(0.62 0.148 46);
+  --primary-foreground: oklch(0.982 0.026 98);
+
+  /* Muted olive surfaces */
+  --secondary: oklch(0.26 0.046 131);
+  --secondary-foreground: oklch(0.982 0.026 98);
+
+  --muted: oklch(0.24 0.044 131);
+  /* Olive-tinted midtone for secondary text */
+  --muted-foreground: oklch(0.62 0.042 118);
+
+  /* Accent — Copper */
+  --accent: oklch(0.62 0.148 46);
+  --accent-foreground: oklch(0.982 0.026 98);
+
+  /* ── Olive Leaf #606c38 — sunlit fields, natural balance ── */
+  --olive-leaf: oklch(0.44 0.072 128);
+
+  /* ── Light Caramel #dda15e — golden syrup, crochet dividers on dark ── */
+  --sage: oklch(0.73 0.115 55);
+
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.982 0.026 98);
+
+  /* Olive borders — step between Black Forest and Olive Leaf */
+  --border: oklch(0.30 0.044 130);
+  --input: oklch(0.24 0.044 131);
+  --ring: oklch(0.62 0.148 46);
+
+  --chart-1: oklch(0.62 0.148 46);   /* Copper */
+  --chart-2: oklch(0.73 0.115 55);   /* Light Caramel */
+  --chart-3: oklch(0.44 0.072 128);  /* Olive Leaf */
+  --chart-4: oklch(0.982 0.026 98);  /* Cornsilk */
+  --chart-5: oklch(0.17 0.054 133);  /* Black Forest */
+
+  --radius: 0.5rem;
+
+  --sidebar: oklch(0.19 0.052 133);
+  --sidebar-foreground: oklch(0.982 0.026 98);
+  --sidebar-primary: oklch(0.62 0.148 46);
+  --sidebar-primary-foreground: oklch(0.982 0.026 98);
+  --sidebar-accent: oklch(0.26 0.046 131);
+  --sidebar-accent-foreground: oklch(0.982 0.026 98);
+  --sidebar-border: oklch(0.30 0.044 130);
+  --sidebar-ring: oklch(0.62 0.148 46);
+
+  /* Keycap colors — dark mode (olive military, copper accents) */
+  --key-face:        linear-gradient(to bottom, #2e3820, #1e2614);
+  --key-border:      #3c4828;
+  --key-wall:        #0e1208;
+  --key-inset:       rgba(180, 220, 120, 0.07);
+  --key-ghost-face:  linear-gradient(to bottom, #283218, #1c2410);
+  --key-ghost-border: #344020;
+  --key-ghost-wall:  #0a0e06;
+}
+
+/* Light theme — Cornsilk #fefae0 + Black Forest text + Copper primary */
+.light {
+  /* ── Cornsilk #fefae0 ── */
+  --background: oklch(0.982 0.026 98);
+  /* ── Black Forest #283618 — dark olive text on sunlit cream ── */
+  --foreground: oklch(0.17 0.054 133);
+
+  --card: oklch(0.990 0.018 95);
+  --card-foreground: oklch(0.17 0.054 133);
+
+  --popover: oklch(0.990 0.018 95);
+  --popover-foreground: oklch(0.17 0.054 133);
+
+  /* ── Copper #bc6c25 — slightly deeper for light-mode contrast ── */
+  --primary: oklch(0.55 0.148 46);
+  --primary-foreground: oklch(0.982 0.026 98);
+
+  --secondary: oklch(0.906 0.030 102);
+  --secondary-foreground: oklch(0.17 0.054 133);
+
+  --muted: oklch(0.880 0.028 102);
+  /* ── Olive Leaf #606c38 — olive-tinted muted text ── */
+  --muted-foreground: oklch(0.44 0.068 124);
+
+  --accent: oklch(0.55 0.148 46);
+  --accent-foreground: oklch(0.982 0.026 98);
+
+  /* ── Olive Leaf #606c38 ── */
+  --olive-leaf: oklch(0.44 0.072 128);
+
+  /* ── Olive Leaf for crochet dividers on Cornsilk ── */
+  --sage: oklch(0.44 0.072 128);
+
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.982 0.026 98);
+
+  /* Olive-tinted warm borders */
+  --border: oklch(0.828 0.038 108);
+  --input: oklch(0.880 0.028 102);
+  --ring: oklch(0.55 0.148 46);
+
+  --sidebar: oklch(0.975 0.024 98);
+  --sidebar-foreground: oklch(0.17 0.054 133);
+  --sidebar-primary: oklch(0.55 0.148 46);
+  --sidebar-primary-foreground: oklch(0.982 0.026 98);
+  --sidebar-accent: oklch(0.906 0.030 102);
+  --sidebar-accent-foreground: oklch(0.17 0.054 133);
+  --sidebar-border: oklch(0.828 0.038 108);
+  --sidebar-ring: oklch(0.55 0.148 46);
+
+  /* Keycap colors — light mode (Cornsilk-parchment keys) */
+  --key-face:        linear-gradient(to bottom, #f2edda, #e2dcc8);
+  --key-border:      #b4a888;
+  --key-wall:        #8c8068;
+  --key-inset:       rgba(255, 252, 230, 0.75);
+  --key-ghost-face:  linear-gradient(to bottom, #ece6d2, #d8d2be);
+  --key-ghost-border: #beb298;
+  --key-ghost-wall:  #9a9278;
+}
+
+@theme inline {
+  --font-sans: var(--font-body), 'Inter', system-ui, sans-serif;
+  --font-heading: var(--font-heading), 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  /* Palette named colors — usable as bg-olive-leaf, text-olive-leaf, etc. */
+  --color-olive-leaf: var(--olive-leaf);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ── Keycap button classes ──────────────────────────────────────────
+   All hover/active states live here — NOT in Tailwind arbitrary values
+   — so CSS specificity works correctly alongside inline styles.
+   ───────────────────────────────────────────────────────────────── */
+
+.keycap {
+  background: var(--key-face);
+  border: 1px solid var(--key-border);
+  box-shadow: 0 4px 0 0 var(--key-wall), inset 0 1px 0 0 var(--key-inset);
+  border-radius: 5px;
+  transition: transform 80ms ease, box-shadow 80ms ease;
+}
+.keycap:hover {
+  transform: translateY(1px);
+  box-shadow: 0 2px 0 0 var(--key-wall), inset 0 1px 0 0 var(--key-inset);
+}
+.keycap:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 0 var(--key-wall);
+}
+
+.keycap-primary {
+  /* Copper #bc6c25 gradient */
+  background: linear-gradient(to bottom, #cc7828 0%, #a85e18 100%);
+  border: 1px solid #7c4412;
+  box-shadow: 0 4px 0 0 #502c08, inset 0 1px 0 0 rgba(255, 240, 200, 0.20);
+  border-radius: 5px;
+  color: #fefae0;  /* Cornsilk */
+  transition: transform 80ms ease, box-shadow 80ms ease;
+}
+.keycap-primary:hover {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 0 #502c08, inset 0 1px 0 0 rgba(255, 240, 200, 0.20);
+}
+.keycap-primary:active {
+  transform: translateY(4px);
+  box-shadow: 0 0px 0 0 #502c08;
+}
+
+.keycap-ghost {
+  background: var(--key-ghost-face);
+  border: 1px solid var(--key-ghost-border);
+  box-shadow: 0 3px 0 0 var(--key-ghost-wall), inset 0 1px 0 0 var(--key-inset);
+  border-radius: 5px;
+  transition: transform 80ms ease, box-shadow 80ms ease;
+}
+.keycap-ghost:hover {
+  transform: translateY(1px);
+  box-shadow: 0 2px 0 0 var(--key-ghost-wall), inset 0 1px 0 0 var(--key-inset);
+}
+.keycap-ghost:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 0 var(--key-ghost-wall);
+}
+
+/* Active/pressed state — used when `active` prop is true */
+.keycap-pressed {
+  background: var(--key-ghost-face);
+  border: 1px solid var(--key-ghost-border);
+  box-shadow: 0 2px 0 0 var(--key-ghost-wall), inset 0 1px 0 0 var(--key-inset);
+  border-radius: 5px;
+  transform: translateY(2px);
+  color: oklch(0.62 0.148 46);  /* Copper */
+}
+
+/* ── Retro / studio effects ─────────────────────────────────────── */
+
+/* Moving CRT scan beam — single bright line sweeping down the page */
+body::before {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 120px;
+  pointer-events: none;
+  z-index: 9998;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(120, 180, 60, 0.012) 40%,
+    rgba(120, 180, 60, 0.024) 50%,
+    rgba(120, 180, 60, 0.012) 60%,
+    transparent 100%
+  );
+  animation: scanBeam 7s linear infinite;
+  top: -120px;
+}
+@keyframes scanBeam {
+  0%   { top: -120px; }
+  100% { top: 110vh; }
+}
+
+/* Static CRT scanline overlay — subtle horizontal lines over the whole page */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 3px,
+    rgba(0, 0, 0, 0.03) 3px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+}
+
+/* Copper glow on primary-colored text (headings, accent words) */
+.text-primary,
+.text-accent {
+  text-shadow: 0 0 24px oklch(0.62 0.148 46 / 0.40);
+}
+
+/* Blinking cursor — apply class="cursor-blink" to any inline element */
+.cursor-blink::after {
+  content: "|";
+  margin-left: 2px;
+  animation: cursorBlink 1.1s step-start infinite;
+  color: oklch(0.62 0.148 46);  /* Copper */
+  font-weight: 300;
+}
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* RGB-split glitch — apply class="glitch-text" + data-text="..." to any element */
+.glitch-text {
+  position: relative;
+  display: inline-block;
+}
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+}
+/* Orange channel — shifts left, clips top band */
+.glitch-text::before {
+  color: #ff6820;
+  clip-path: polygon(0 15%, 100% 15%, 100% 42%, 0 42%);
+}
+/* Cyan channel — shifts right, clips bottom band */
+.glitch-text::after {
+  color: #40c8e0;
+  clip-path: polygon(0 58%, 100% 58%, 100% 82%, 0 82%);
+}
+.glitch-text:hover::before {
+  animation: glitchBefore 0.38s steps(4) forwards;
+}
+.glitch-text:hover::after {
+  animation: glitchAfter 0.38s steps(4) forwards;
+}
+@keyframes glitchBefore {
+  0%   { opacity: 0;   transform: translateX(0); }
+  15%  { opacity: 0.9; transform: translateX(-5px); }
+  30%  { opacity: 0;   transform: translateX(3px); }
+  50%  { opacity: 0.7; transform: translateX(-4px); }
+  70%  { opacity: 0;   transform: translateX(4px); }
+  100% { opacity: 0;   transform: translateX(0); }
+}
+@keyframes glitchAfter {
+  0%   { opacity: 0;   transform: translateX(0); }
+  15%  { opacity: 0.8; transform: translateX(5px); }
+  30%  { opacity: 0;   transform: translateX(-3px); }
+  50%  { opacity: 0.6; transform: translateX(4px); }
+  70%  { opacity: 0;   transform: translateX(-4px); }
+  100% { opacity: 0;   transform: translateX(0); }
+}
+
+/* Caramel/honey-colored yarn dividers — contrasts with olive backgrounds */
+.crochet-sage {
+  color: var(--sage);
+  opacity: 0.60;
+}
+
+/* Blueprint grid pulse */
+@keyframes gridNodePulse {
+  0%, 100% { opacity: 0.18; transform: scale(1); }
+  50%       { opacity: 0.75; transform: scale(2); }
+}
