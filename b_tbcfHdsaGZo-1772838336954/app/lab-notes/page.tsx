@@ -1,23 +1,24 @@
 "use client"
 
 // ============================================================
-// LAB NOTES PAGE — app/lab-notes/page.tsx
+// JOURNAL PAGE — app/lab-notes/page.tsx
 // ============================================================
 //
-// This is the /lab-notes page — your writing, technical deep-dives,
-// project reflections, and anything you want to document publicly.
+// This is the /lab-notes page (displayed as "Journal") — your writing,
+// technical deep-dives, project reflections, and anything you want
+// to document publicly.
 //
-// HOW TO ADD A NEW NOTE:
-//   1. Add a new object to `labNotes` below
+// HOW TO ADD A NEW ENTRY:
+//   1. Add a new object to `journalEntries` below
 //   2. Make sure the `id` is URL-friendly (lowercase, hyphens, no spaces)
-//   3. The actual note content lives in:
+//   3. The actual entry content lives in:
 //      app/lab-notes/[slug]/page.tsx
 //      (you'll need to create that file separately and add content)
 //
 // HOW TO REORDER:
 //   Move objects up/down in the array. First = top of page.
 //
-// PINNED NOTES:
+// PINNED ENTRIES:
 //   Set pinned: true to show a pin icon on the card.
 //
 // ANNOTATIONS:
@@ -33,10 +34,10 @@ import { BlueprintGrid } from "@/components/blueprint-grid"
 import { Footer } from "@/components/footer"
 
 // ============================================================
-// LAB NOTES LIST
+// JOURNAL ENTRIES
 // ============================================================
-const labNotes = [
-  // ✏️ NOTE 1 — pinned notes show with a pin icon in the top corner
+const journalEntries = [
+  // ✏️ ENTRY 1 — pinned entries show with a pin icon in the top corner
   {
     id: "building-cold-chain-ai",
     // ✏️ TITLE — shown large on the card
@@ -49,14 +50,13 @@ const labNotes = [
     // ✏️ READ TIME — estimate, shown small
     readTime: "8 min",
     // ✏️ CATEGORY — short label, shown as a colored badge
-    // Examples: "AI", "Hardware", "Building", "Learning", "Design", "Technical", "Reflection"
     category: "AI",
-    // ✏️ PINNED — true = pin icon on card; use for featured/favorite notes
+    // ✏️ PINNED — true = pin icon on card; use for featured/favorite entries
     pinned: true,
     // ✏️ ANNOTATION — small italic scribble shown on card, or null to skip
     annotation: "Key breakthrough!",
   },
-  // ✏️ NOTE 2
+  // ✏️ ENTRY 2
   {
     id: "my-first-custom-pcb",
     title: "My First Custom PCB: Lessons Learned",
@@ -67,7 +67,7 @@ const labNotes = [
     pinned: true,
     annotation: "Still learning",
   },
-  // ✏️ NOTE 3
+  // ✏️ ENTRY 3
   {
     id: "memory-in-ai-companions",
     title: "Memory Architectures for AI Companions",
@@ -78,7 +78,7 @@ const labNotes = [
     pinned: false,
     annotation: null,
   },
-  // ✏️ NOTE 4
+  // ✏️ ENTRY 4
   {
     id: "beamforming-basics",
     title: "Beamforming: From Theory to FPGA",
@@ -89,7 +89,7 @@ const labNotes = [
     pinned: false,
     annotation: null,
   },
-  // ✏️ NOTE 5
+  // ✏️ ENTRY 5
   {
     id: "wearables-health-data",
     title: "What Wearable Data Actually Tells You",
@@ -100,7 +100,7 @@ const labNotes = [
     pinned: false,
     annotation: "Draft 2",
   },
-  // ✏️ NOTE 6
+  // ✏️ ENTRY 6
   {
     id: "hackathon-reflections",
     title: "Hackathon Reflections: 48 Hours to MVP",
@@ -112,13 +112,13 @@ const labNotes = [
     annotation: null,
   },
 
-  // ➕ TO ADD A NEW NOTE:
+  // ➕ TO ADD A NEW ENTRY:
   // Copy one of the objects above, paste it here, and edit the fields.
-  // Then create the actual note content at app/lab-notes/[slug]/page.tsx
+  // Then create the actual entry content at app/lab-notes/[slug]/page.tsx
   //
   // {
-  //   id: "my-note-slug",           // ← becomes /lab-notes/my-note-slug
-  //   title: "Note Title",
+  //   id: "my-entry-slug",           // ← becomes /lab-notes/my-entry-slug
+  //   title: "Entry Title",
   //   excerpt: "Preview sentence that makes people want to click.",
   //   date: "2026-03-01",           // YYYY-MM-DD
   //   readTime: "5 min",
@@ -139,9 +139,9 @@ function formatDate(dateString: string) {
 }
 
 // ============================================================
-// PAGE TEMPLATE — no need to edit below this line
+// PAGE TEMPLATE
 // ============================================================
-export default function LabNotesPage() {
+export default function JournalPage() {
   return (
     <main className="relative min-h-screen bg-background">
       <BlueprintGrid />
@@ -175,29 +175,42 @@ export default function LabNotesPage() {
             </Link>
 
             <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.4em] text-primary">
-              Research &amp; Process
+              Thinking Out Loud
             </p>
             <h1 className="font-heading text-6xl font-bold tracking-tight text-foreground md:text-7xl lg:text-8xl">
-              Lab Notes
+              Journal
             </h1>
-            {/* ✏️ SUBTITLE — edit if you want */}
-            <p className="mt-6 max-w-xl text-base text-muted-foreground">
-              Technical deep-dives, project reflections, and thinking out loud.
-              Part documentation, part journal, part working-in-public.
-            </p>
 
-            <div className="mt-4 -rotate-2 font-mono text-xs text-primary/60">
+            {/* Quote */}
+            <motion.blockquote
+              className="mt-8 max-w-lg border-l-2 border-primary/40 pl-5"
+              initial={{ opacity: 0, x: -12 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <p
+                className="text-base leading-relaxed text-muted-foreground"
+                style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontStyle: "italic" }}
+              >
+                &ldquo;Every great thinker keeps a journal, you know.&rdquo;
+              </p>
+              <footer className="mt-2 font-mono text-[10px] uppercase tracking-widest text-muted-foreground/50">
+                — Trenton Lee Stewart, <span className="not-italic">The Mysterious Benedict Society</span>
+              </footer>
+            </motion.blockquote>
+
+            <div className="mt-6 -rotate-2 font-mono text-xs text-primary/60">
               ~ where ideas take shape ~
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* ── NOTES GRID ── */}
+      {/* ── ENTRIES GRID ── */}
       <section className="relative z-10 pb-32">
         <div className="mx-auto max-w-5xl px-6 md:pl-32">
           <div className="grid gap-6 md:grid-cols-2">
-            {labNotes.map((note, index) => (
+            {journalEntries.map((note, index) => (
               <motion.div
                 key={note.id}
                 initial={{ opacity: 0, y: 20, rotate: index % 2 === 0 ? -1 : 1 }}
@@ -212,7 +225,7 @@ export default function LabNotesPage() {
                   {/* Tape strip at top */}
                   <div className="absolute -top-1 left-1/2 h-4 w-16 -translate-x-1/2 bg-primary/10 opacity-60" />
 
-                  {/* Pin icon for pinned notes */}
+                  {/* Pin icon for pinned entries */}
                   {note.pinned && (
                     <div className="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full bg-primary/20 text-primary">
                       <Pin className="h-3 w-3" />
@@ -270,7 +283,7 @@ export default function LabNotesPage() {
             transition={{ delay: 0.8 }}
           >
             <div className="flex items-center gap-2 font-mono text-[10px] text-muted-foreground/40">
-              <span>more notes in progress...</span>
+              <span>more entries in progress...</span>
               <svg width="24" height="12" viewBox="0 0 24 12" className="text-primary/30">
                 <path d="M0 6 Q 6 0 12 6 T 24 6" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="2 2" />
               </svg>

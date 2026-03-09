@@ -15,7 +15,7 @@ const socialLinks = [
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
-  { href: "/lab-notes", label: "Lab Notes" },
+  { href: "/lab-notes", label: "Journal" },
   { href: "/about", label: "Life" },
   { href: "/resume", label: "Resume" },
 ]
@@ -53,13 +53,8 @@ export function Footer() {
               </span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Penn CompE + Finance. Building at the intersection of hardware, AI, and financial systems.
+              Computer engineering and finance student at Penn. I build things at the intersection of hardware, software, and financial systems.
             </p>
-            
-            {/* Technical annotation */}
-            <div className="mt-6 font-mono text-[10px] text-muted-foreground/30">
-              v2.4.0 // last updated 2026
-            </div>
           </div>
 
           {/* Navigation - keyboard buttons */}
@@ -111,7 +106,7 @@ export function Footer() {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <p className="font-mono text-[10px] text-muted-foreground/50">
-            © 2026 Ria. All systems operational.
+            © 2026 Ria.
           </p>
           
           {/* Tiny peanut easter egg */}

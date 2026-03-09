@@ -53,6 +53,7 @@ export interface Project {
   timeline: { phase: string; description: string }[]
   results: string[]
   imagePlaceholder: string   // reminder of what photo/screenshot to add
+  logo?: string              // path to project logo, e.g. "/projects/nomi-logo.png"
   links?: { label: string; href: string; icon: "github" | "external" }[]
 }
 
@@ -153,36 +154,39 @@ export const projects: Project[] = [
 
     // ✏️ LIST VIEW
     title: "GuardianShot",
-    description: "AI-powered vaccine monitoring system for cold chain integrity in remote healthcare settings — predicts spoilage before it happens.",
-    tags: ["AI", "IoT", "Health Tech"],
-    status: "Deployed",
-    year: "2025",
+    description: "Gunshot detection system using 3 CNNs on a Raspberry Pi — 98% accuracy, sub-1s alerts, verified at a live police gun range.",
+    tags: ["ML", "Hardware", "PyTorch"],
+    status: "Completed",
+    year: "2023",
 
     // ✏️ DETAIL PAGE
-    tagline: "AI-powered cold chain monitoring for vaccine integrity",
-    why: "I came across data showing that up to 50% of vaccines are wasted due to cold chain failures in developing regions. The alarming part wasn't the waste — it was that most failures are only detected after the vaccines are already administered. I wanted to build something that catches the problem before it becomes a tragedy.",
-    overview: "GuardianShot is an intelligent monitoring system designed to ensure vaccine integrity throughout the cold chain. Using edge ML and IoT sensors, it predicts temperature anomalies before they compromise vaccine efficacy — giving healthcare workers time to act.",
-    problem: "In remote healthcare settings, vaccine spoilage due to cold chain breaks wastes billions of dollars annually and puts lives at risk. Traditional monitoring systems only alert after damage has occurred — it's reactive, not preventive.",
-    solution: "A predictive monitoring system with lightweight ML models running directly on edge devices. It forecasts temperature anomalies 30+ minutes before they happen, giving healthcare workers time to intervene before any doses are compromised.",
-    technicalApproach: "The system uses a custom-trained LSTM model optimized for microcontroller deployment via TensorFlow Lite. Sensor data is processed locally — only anomaly predictions are transmitted, which dramatically reduces power consumption and bandwidth requirements. The mobile app handles alerting and historical visualization.",
-    stack: ["TensorFlow Lite", "ESP32", "Python", "MQTT", "React Native", "PostgreSQL"],
+    tagline: "A $100 gunshot detection system that outperforms $90,000 commercial alternatives",
+    why: "While biking to the gas station for ice cream, my friends and I heard a gunshot. \"What was that?\" we wondered. \"I'm scared...\" We pedaled home fast. My high school was in Durham — one of the highest crime rate cities in America — and I'd already lived through gun threats and watched school shootings on the news. I felt compelled to do something. When I discovered that existing gunshot detection systems cost $90,000 per square mile per year — pricing out the exact schools that need them most — I knew what I had to build.",
+    overview: "GuardianShot is a Raspberry Pi-based gunshot detection device that listens to audio in real time, analyzes it with three convolutional neural networks, and alerts security and law enforcement via email and SMS within one second of detecting a shot. It achieves 98% accuracy at a fraction of the cost of any commercial alternative.",
+    problem: "Every day, 12 children die from gun violence in America. 74% of shootings don't stop until law enforcement intervenes — meaning faster detection directly saves lives. Yet the commercial gunshot detection systems used in cities cost $90,000 per square mile annually. Schools, especially in high-crime areas, simply can't afford them.",
+    solution: "A portable Raspberry Pi device with a USB microphone and three trained CNNs that runs 24/7, costs roughly $100 in hardware, and alerts administrators within one second of detecting a gunshot. The hardest part wasn't the model — it was reducing false positives from everyday sounds like door slams, fireworks, and students. I solved it by collecting real-world audio in different environments and iterating on the training data until the system was reliable enough to deploy in a real school.",
+    technicalApproach: "The system uses a cascade of three PyTorch convolutional neural networks trained on a custom dataset — a combination of online audio sources and real-world recordings I made across different environments. Audio is captured via USB mic on a Raspberry Pi Zero W, processed locally, and classified in real time without any cloud dependency. When a gunshot is detected, the system triggers immediate email and SMS alerts to pre-configured contacts. I validated the system live at the Cary Police Department gun range to confirm performance under real gunshot acoustics.",
+    stack: ["Python", "PyTorch", "Raspberry Pi", "CNNs", "SMTP / Twilio", "NumPy", "Librosa"],
     timeline: [
-      { phase: "Research & Design", description: "Analyzed cold chain failure modes and designed sensor architecture for remote clinic constraints" },
-      { phase: "ML Development", description: "Trained and compressed LSTM model for deployment on ESP32 with TensorFlow Lite" },
-      { phase: "Hardware Prototyping", description: "Built custom sensor nodes with ESP32 and precision temperature probes" },
-      { phase: "Mobile App", description: "Developed React Native monitoring app with offline-capable alerting" },
-      { phase: "Field Deployment", description: "Deployed and validated in 3 rural clinic environments" },
+      { phase: "Research", description: "Spoke with the police chief, city council members, and legislative experts to understand the problem space and what a realistic solution looked like." },
+      { phase: "MVP 1 — Acoustic Sensing", description: "Built first prototype with an acoustic sensor + microcontroller, graphing amplitude values in real time on Arduino serial plotter to understand sound signatures." },
+      { phase: "MVP 2 — Neural Network", description: "Trained a PyTorch CNN on audio data and ran it on a Raspberry Pi Zero W with an i2s MEMS microphone breakout. Got the model working but false positive rate was still too high." },
+      { phase: "MVP 3 — Multi-Device System", description: "Scaled to multiple devices with consistent power supply, live dashboard, and real-time email/SMS alerting. Iterated on training data to hit 98% accuracy." },
+      { phase: "Validation", description: "Tested at the Cary Police Department gun range with Chief Terry Sult and Councilmember Sarika Bansal. System performed under real gunshot acoustics." },
+      { phase: "School & Policy Outreach", description: "Presented to school board for deployment consideration. Authored a research paper on gun violence prevalence in schools. Ran safety workshops and participated in school shooter drills." },
     ],
     results: [
-      "94% anomaly prediction accuracy with 30-minute lead time",
-      "73% reduction in vaccine spoilage in pilot clinics",
-      "6+ months battery life per sensor node on a single charge",
-      "Successfully deployed and running in 3 healthcare facilities",
+      "98% gunshot detection accuracy with sub-1 second alert time",
+      "Validated at Cary Police Department gun range with live fire",
+      "Received Award for Excellence from Police Chief Terry Sult",
+      "1st Place at NC Science and Engineering Fair (NCSEF) 2024",
+      "1st Place at NCSAS Science Fair 2024",
+      "Presented to school board for potential deployment",
+      "Estimated hardware cost ~$100 vs. $90,000/sq mile for commercial systems",
     ],
-    imagePlaceholder: "Hardware prototype photo or deployment site",
+    imagePlaceholder: "Photo with Police Chief Terry Sult or the GuardianShot device",
     links: [
-      { label: "GitHub", href: "#", icon: "github" },
-      { label: "Case Study", href: "#", icon: "external" },
+      { label: "GitHub", href: "https://github.com/peanutz28/guardianshot", icon: "github" },
     ],
   },
 

@@ -5,7 +5,7 @@ import Link from "next/link"
 import { ArrowUpRight, Pin } from "lucide-react"
 import { KeyboardButton } from "./keyboard-button"
 
-const labNotes = [
+const journalEntries = [
   {
     id: "building-a-risc-v-core",
     title: "Building a RISC-V Core from Scratch",
@@ -39,11 +39,11 @@ function formatDate(dateString: string) {
   return `${months[month - 1]} ${day}, ${year}`
 }
 
-export function LabNotesPreview() {
+export function JournalPreview() {
   return (
-    <section className="relative py-32">
+    <section className="relative py-20">
       <div className="relative z-10 mx-auto max-w-7xl px-6">
-        {/* Section header - editorial */}
+        {/* Section header */}
         <motion.div
           className="mb-20 flex items-end justify-between"
           initial={{ opacity: 0, y: 20 }}
@@ -53,10 +53,10 @@ export function LabNotesPreview() {
         >
           <div>
             <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.4em] text-primary">
-              Research & Process
+              Thinking Out Loud
             </p>
             <h2 className="font-heading text-5xl font-bold tracking-tight text-foreground md:text-6xl">
-              Lab Notes
+              Journal
             </h2>
           </div>
           <KeyboardButton href="/lab-notes" variant="ghost" size="sm" className="hidden sm:inline-flex">
@@ -67,9 +67,9 @@ export function LabNotesPreview() {
           </KeyboardButton>
         </motion.div>
 
-        {/* Notes as notebook entries */}
+        {/* Entries as notebook rows */}
         <div className="space-y-2">
-          {labNotes.map((note, index) => (
+          {journalEntries.map((note, index) => (
             <motion.div
               key={note.id}
               initial={{ opacity: 0, x: -20 }}
@@ -83,7 +83,7 @@ export function LabNotesPreview() {
               >
                 {/* Spotlight on hover */}
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/[0.02] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                
+
                 {/* Date */}
                 <div className="relative hidden md:col-span-2 md:block">
                   <span className="font-mono text-xs text-muted-foreground/60">
@@ -142,7 +142,7 @@ export function LabNotesPreview() {
         >
           <KeyboardButton href="/lab-notes" variant="default" size="sm">
             <span className="flex items-center gap-2">
-              View all notes
+              View all entries
               <ArrowUpRight className="h-4 w-4" />
             </span>
           </KeyboardButton>

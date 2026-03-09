@@ -36,10 +36,10 @@ export function KeyboardButton({
 
   const classes = cn(
     "relative inline-flex items-center justify-center font-medium select-none cursor-pointer",
-    // Size — keep vertical padding tight so keys look flat, not tall
-    size === "sm" && "px-3 py-1 text-xs",
-    size === "md" && "px-4 py-1.5 text-sm",
-    size === "lg" && "px-6 py-2.5 text-base font-semibold",
+    // Size
+    size === "sm" && "px-4 py-2 text-sm",
+    size === "md" && "px-5 py-2 text-sm",
+    size === "lg" && "px-9 py-4 text-base font-semibold",
     // Ghost text color (default → muted, hovers to full foreground)
     variant === "ghost" && !active && "text-muted-foreground hover:text-foreground",
     variantClass,

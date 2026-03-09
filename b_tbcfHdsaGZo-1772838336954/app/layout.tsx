@@ -16,12 +16,15 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Ria | Engineer & Builder',
-  description: 'Penn CompE + Finance. Building at the intersection of hardware, AI, and financial systems.',
+  title: 'Ria | Penn M&T Builder',
+  description: "Freshman at Penn M&T studying computer engineering and finance. Building things at the intersection of hardware, AI, and financial systems.",
+  icons: {
+    icon: '/icon.svg',
+  },
 }
 
 export const viewport: Viewport = {
-  themeColor: '#f5f0e8',
+  themeColor: '#0A0A0A',
 }
 
 export default function RootLayout({

@@ -4,139 +4,130 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   Ria Portfolio — Olive Garden Feast palette
-   Black Forest #283618 · Olive Leaf #606c38
-   Cornsilk #fefae0 · Light Caramel #dda15e · Copper #bc6c25
+   Ria Portfolio — Bold & Modern palette
+   Near-Black #0A0A0A · Off-White #F0F0F0 · Vivid Orange #F97316
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 :root {
-  /* ── Black Forest #283618 — deep army olive, midnight workshop ── */
-  --background: oklch(0.17 0.054 133);
+  /* ── Near-black #0A0A0A ── */
+  --background: oklch(0.078 0 0);
 
-  /* ── Cornsilk #fefae0 — creamy pale yellow, warm as candlelight ── */
-  --foreground: oklch(0.982 0.026 98);
+  /* ── Off-white #F0F0F0 ── */
+  --foreground: oklch(0.95 0 0);
 
-  /* Elevated olive panels — between Black Forest and Olive Leaf */
-  --card: oklch(0.22 0.050 132);
-  --card-foreground: oklch(0.982 0.026 98);
+  /* Elevated dark panels */
+  --card: oklch(0.11 0 0);
+  --card-foreground: oklch(0.95 0 0);
 
-  --popover: oklch(0.20 0.051 132);
-  --popover-foreground: oklch(0.982 0.026 98);
+  --popover: oklch(0.10 0 0);
+  --popover-foreground: oklch(0.95 0 0);
 
-  /* ── Copper #bc6c25 — reddish-brown, glowing fireplace ── */
-  --primary: oklch(0.62 0.148 46);
-  --primary-foreground: oklch(0.982 0.026 98);
+  /* ── Vivid Orange #F97316 ── */
+  --primary: oklch(0.703 0.213 50);
+  --primary-foreground: oklch(0.078 0 0);
 
-  /* Muted olive surfaces */
-  --secondary: oklch(0.26 0.046 131);
-  --secondary-foreground: oklch(0.982 0.026 98);
+  /* Muted dark surfaces */
+  --secondary: oklch(0.14 0 0);
+  --secondary-foreground: oklch(0.95 0 0);
 
-  --muted: oklch(0.24 0.044 131);
-  /* Olive-tinted midtone for secondary text */
-  --muted-foreground: oklch(0.62 0.042 118);
+  --muted: oklch(0.13 0 0);
+  --muted-foreground: oklch(0.68 0 0);
 
-  /* Accent — Copper */
-  --accent: oklch(0.62 0.148 46);
-  --accent-foreground: oklch(0.982 0.026 98);
+  /* Accent — same orange */
+  --accent: oklch(0.703 0.213 50);
+  --accent-foreground: oklch(0.078 0 0);
 
-  /* ── Olive Leaf #606c38 — sunlit fields, natural balance ── */
-  --olive-leaf: oklch(0.44 0.072 128);
+  /* Unused in dark mode but kept for compat */
+  --olive-leaf: oklch(0.703 0.213 50);
 
-  /* ── Light Caramel #dda15e — golden syrup, crochet dividers on dark ── */
-  --sage: oklch(0.73 0.115 55);
+  /* Crochet dividers — orange tint */
+  --sage: oklch(0.703 0.213 50);
 
   --destructive: oklch(0.55 0.22 25);
-  --destructive-foreground: oklch(0.982 0.026 98);
+  --destructive-foreground: oklch(0.95 0 0);
 
-  /* Olive borders — step between Black Forest and Olive Leaf */
-  --border: oklch(0.30 0.044 130);
-  --input: oklch(0.24 0.044 131);
-  --ring: oklch(0.62 0.148 46);
+  /* Dark borders */
+  --border: oklch(0.18 0 0);
+  --input: oklch(0.13 0 0);
+  --ring: oklch(0.703 0.213 50);
 
-  --chart-1: oklch(0.62 0.148 46);   /* Copper */
-  --chart-2: oklch(0.73 0.115 55);   /* Light Caramel */
-  --chart-3: oklch(0.44 0.072 128);  /* Olive Leaf */
-  --chart-4: oklch(0.982 0.026 98);  /* Cornsilk */
-  --chart-5: oklch(0.17 0.054 133);  /* Black Forest */
+  --chart-1: oklch(0.703 0.213 50);   /* Orange */
+  --chart-2: oklch(0.80 0.12 55);     /* Amber */
+  --chart-3: oklch(0.65 0.18 25);     /* Red */
+  --chart-4: oklch(0.95 0 0);         /* Off-white */
+  --chart-5: oklch(0.078 0 0);        /* Near-black */
 
   --radius: 0.5rem;
 
-  --sidebar: oklch(0.19 0.052 133);
-  --sidebar-foreground: oklch(0.982 0.026 98);
-  --sidebar-primary: oklch(0.62 0.148 46);
-  --sidebar-primary-foreground: oklch(0.982 0.026 98);
-  --sidebar-accent: oklch(0.26 0.046 131);
-  --sidebar-accent-foreground: oklch(0.982 0.026 98);
-  --sidebar-border: oklch(0.30 0.044 130);
-  --sidebar-ring: oklch(0.62 0.148 46);
+  --sidebar: oklch(0.09 0 0);
+  --sidebar-foreground: oklch(0.95 0 0);
+  --sidebar-primary: oklch(0.703 0.213 50);
+  --sidebar-primary-foreground: oklch(0.078 0 0);
+  --sidebar-accent: oklch(0.14 0 0);
+  --sidebar-accent-foreground: oklch(0.95 0 0);
+  --sidebar-border: oklch(0.18 0 0);
+  --sidebar-ring: oklch(0.703 0.213 50);
 
-  /* Keycap colors — dark mode (olive military, copper accents) */
-  --key-face:        linear-gradient(to bottom, #2e3820, #1e2614);
-  --key-border:      #3c4828;
-  --key-wall:        #0e1208;
-  --key-inset:       rgba(180, 220, 120, 0.07);
-  --key-ghost-face:  linear-gradient(to bottom, #283218, #1c2410);
-  --key-ghost-border: #344020;
-  --key-ghost-wall:  #0a0e06;
+  /* Keycap colors — dark mode (charcoal keys, orange accents) */
+  --key-face:        linear-gradient(to bottom, #1c1c1c, #131313);
+  --key-border:      #2a2a2a;
+  --key-wall:        #080808;
+  --key-inset:       rgba(255, 255, 255, 0.04);
+  --key-ghost-face:  linear-gradient(to bottom, #181818, #101010);
+  --key-ghost-border: #222222;
+  --key-ghost-wall:  #060606;
 }
 
-/* Light theme — Cornsilk #fefae0 + Black Forest text + Copper primary */
+/* Light theme — warm white + dark text + vivid orange */
 .light {
-  /* ── Cornsilk #fefae0 ── */
-  --background: oklch(0.982 0.026 98);
-  /* ── Black Forest #283618 — dark olive text on sunlit cream ── */
-  --foreground: oklch(0.17 0.054 133);
+  --background: oklch(0.98 0 0);
+  --foreground: oklch(0.10 0 0);
 
-  --card: oklch(0.990 0.018 95);
-  --card-foreground: oklch(0.17 0.054 133);
+  --card: oklch(0.995 0 0);
+  --card-foreground: oklch(0.10 0 0);
 
-  --popover: oklch(0.990 0.018 95);
-  --popover-foreground: oklch(0.17 0.054 133);
+  --popover: oklch(0.995 0 0);
+  --popover-foreground: oklch(0.10 0 0);
 
-  /* ── Copper #bc6c25 — slightly deeper for light-mode contrast ── */
-  --primary: oklch(0.55 0.148 46);
-  --primary-foreground: oklch(0.982 0.026 98);
+  /* Slightly deeper orange for light-mode contrast */
+  --primary: oklch(0.63 0.213 50);
+  --primary-foreground: oklch(0.98 0 0);
 
-  --secondary: oklch(0.906 0.030 102);
-  --secondary-foreground: oklch(0.17 0.054 133);
+  --secondary: oklch(0.93 0 0);
+  --secondary-foreground: oklch(0.10 0 0);
 
-  --muted: oklch(0.880 0.028 102);
-  /* ── Olive Leaf #606c38 — olive-tinted muted text ── */
-  --muted-foreground: oklch(0.44 0.068 124);
+  --muted: oklch(0.92 0 0);
+  --muted-foreground: oklch(0.36 0 0);
 
-  --accent: oklch(0.55 0.148 46);
-  --accent-foreground: oklch(0.982 0.026 98);
+  --accent: oklch(0.63 0.213 50);
+  --accent-foreground: oklch(0.98 0 0);
 
-  /* ── Olive Leaf #606c38 ── */
-  --olive-leaf: oklch(0.44 0.072 128);
-
-  /* ── Olive Leaf for crochet dividers on Cornsilk ── */
-  --sage: oklch(0.44 0.072 128);
+  --olive-leaf: oklch(0.63 0.213 50);
+  --sage: oklch(0.63 0.213 50);
 
   --destructive: oklch(0.55 0.22 25);
-  --destructive-foreground: oklch(0.982 0.026 98);
+  --destructive-foreground: oklch(0.98 0 0);
 
-  /* Olive-tinted warm borders */
-  --border: oklch(0.828 0.038 108);
-  --input: oklch(0.880 0.028 102);
-  --ring: oklch(0.55 0.148 46);
+  --border: oklch(0.87 0 0);
+  --input: oklch(0.92 0 0);
+  --ring: oklch(0.63 0.213 50);
 
-  --sidebar: oklch(0.975 0.024 98);
-  --sidebar-foreground: oklch(0.17 0.054 133);
-  --sidebar-primary: oklch(0.55 0.148 46);
-  --sidebar-primary-foreground: oklch(0.982 0.026 98);
-  --sidebar-accent: oklch(0.906 0.030 102);
-  --sidebar-accent-foreground: oklch(0.17 0.054 133);
-  --sidebar-border: oklch(0.828 0.038 108);
-  --sidebar-ring: oklch(0.55 0.148 46);
+  --sidebar: oklch(0.97 0 0);
+  --sidebar-foreground: oklch(0.10 0 0);
+  --sidebar-primary: oklch(0.63 0.213 50);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.93 0 0);
+  --sidebar-accent-foreground: oklch(0.10 0 0);
+  --sidebar-border: oklch(0.87 0 0);
+  --sidebar-ring: oklch(0.63 0.213 50);
 
-  /* Keycap colors — light mode (Cornsilk-parchment keys) */
-  --key-face:        linear-gradient(to bottom, #f2edda, #e2dcc8);
-  --key-border:      #b4a888;
-  --key-wall:        #8c8068;
-  --key-inset:       rgba(255, 252, 230, 0.75);
-  --key-ghost-face:  linear-gradient(to bottom, #ece6d2, #d8d2be);
-  --key-ghost-border: #beb298;
-  --key-ghost-wall:  #9a9278;
+  /* Keycap colors — light mode */
+  --key-face:        linear-gradient(to bottom, #f5f5f5, #e8e8e8);
+  --key-border:      #c8c8c8;
+  --key-wall:        #a0a0a0;
+  --key-inset:       rgba(255, 255, 255, 0.80);
+  --key-ghost-face:  linear-gradient(to bottom, #efefef, #e2e2e2);
+  --key-ghost-border: #d0d0d0;
+  --key-ghost-wall:  #b0b0b0;
 }
 
 @theme inline {
@@ -257,69 +248,12 @@
   color: oklch(0.62 0.148 46);  /* Copper */
 }
 
-/* ── Retro / studio effects ─────────────────────────────────────── */
-
-/* Moving CRT scan beam — single bright line sweeping down the page */
-body::before {
-  content: "";
-  position: fixed;
-  left: 0;
-  right: 0;
-  height: 120px;
-  pointer-events: none;
-  z-index: 9998;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(120, 180, 60, 0.012) 40%,
-    rgba(120, 180, 60, 0.024) 50%,
-    rgba(120, 180, 60, 0.012) 60%,
-    transparent 100%
-  );
-  animation: scanBeam 7s linear infinite;
-  top: -120px;
-}
-@keyframes scanBeam {
-  0%   { top: -120px; }
-  100% { top: 110vh; }
+/* ── Subtle orange underline on primary text links ─────────────── */
+a.text-primary:hover {
+  text-decoration-color: oklch(0.703 0.213 50 / 0.50);
 }
 
-/* Static CRT scanline overlay — subtle horizontal lines over the whole page */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9999;
-  background: repeating-linear-gradient(
-    to bottom,
-    transparent 0px,
-    transparent 3px,
-    rgba(0, 0, 0, 0.03) 3px,
-    rgba(0, 0, 0, 0.03) 4px
-  );
-}
-
-/* Copper glow on primary-colored text (headings, accent words) */
-.text-primary,
-.text-accent {
-  text-shadow: 0 0 24px oklch(0.62 0.148 46 / 0.40);
-}
-
-/* Blinking cursor — apply class="cursor-blink" to any inline element */
-.cursor-blink::after {
-  content: "|";
-  margin-left: 2px;
-  animation: cursorBlink 1.1s step-start infinite;
-  color: oklch(0.62 0.148 46);  /* Copper */
-  font-weight: 300;
-}
-@keyframes cursorBlink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0; }
-}
-
-/* RGB-split glitch — apply class="glitch-text" + data-text="..." to any element */
+/* ── Glitch text — apply class="glitch-text" + data-text="..." ── */
 .glitch-text {
   position: relative;
   display: inline-block;
@@ -328,27 +262,26 @@ body::after {
 .glitch-text::after {
   content: attr(data-text);
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   width: 100%;
   opacity: 0;
   pointer-events: none;
 }
-/* Orange channel — shifts left, clips top band */
+/* Orange channel */
 .glitch-text::before {
-  color: #ff6820;
+  color: oklch(0.703 0.213 50);
   clip-path: polygon(0 15%, 100% 15%, 100% 42%, 0 42%);
 }
-/* Cyan channel — shifts right, clips bottom band */
+/* Cyan channel */
 .glitch-text::after {
-  color: #40c8e0;
+  color: #38bdf8;
   clip-path: polygon(0 58%, 100% 58%, 100% 82%, 0 82%);
 }
 .glitch-text:hover::before {
-  animation: glitchBefore 0.38s steps(4) forwards;
+  animation: glitchBefore 0.4s steps(4) forwards;
 }
 .glitch-text:hover::after {
-  animation: glitchAfter 0.38s steps(4) forwards;
+  animation: glitchAfter 0.4s steps(4) forwards;
 }
 @keyframes glitchBefore {
   0%   { opacity: 0;   transform: translateX(0); }
