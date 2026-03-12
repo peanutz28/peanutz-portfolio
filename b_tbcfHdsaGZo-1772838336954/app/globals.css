@@ -306,6 +306,56 @@ a.text-primary:hover {
   opacity: 0.60;
 }
 
+/* ── Keyword highlight spans in bio ──────────────────────────── */
+.keyword-highlight {
+  color: inherit;
+  border-bottom: 1px solid oklch(0.703 0.213 50 / 0.25);
+  transition: color 0.2s ease, border-color 0.2s ease, text-shadow 0.2s ease;
+  cursor: default;
+  white-space: nowrap;
+}
+.keyword-highlight:hover {
+  color: oklch(0.703 0.213 50);
+  border-color: oklch(0.703 0.213 50 / 0.6);
+  text-shadow: 0 0 18px oklch(0.703 0.213 50 / 0.35);
+}
+
+/* ── Smooth section header underline draw ────────────────────── */
+.heading-draw {
+  position: relative;
+  display: inline-block;
+}
+.heading-draw::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: oklch(0.703 0.213 50);
+  transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.heading-draw:hover::after {
+  width: 100%;
+}
+
+/* ── Nav "Saheta" shimmer — periodic orange glow sweep ────────── */
+.nav-shimmer {
+  color: oklch(0.95 0 0 / 0.72);
+  transition: color 0.15s ease;
+  animation: nav-name-shimmer 7s ease-in-out infinite;
+  animation-delay: 3s;
+}
+/* On parent group hover, snap to primary orange */
+.group:hover .nav-shimmer {
+  color: oklch(0.703 0.213 50);
+  animation: none;
+}
+@keyframes nav-name-shimmer {
+  0%,  68%, 100% { color: oklch(0.95 0 0 / 0.72); }
+  78%             { color: oklch(0.703 0.213 50 / 0.9); }
+}
+
 /* Blueprint grid pulse */
 @keyframes gridNodePulse {
   0%, 100% { opacity: 0.18; transform: scale(1); }

@@ -1,10 +1,12 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { useRef } from "react"
+import { motion, useMotionValue, useSpring } from "framer-motion"
 import { ArrowDown, Camera } from "lucide-react"
 import { KeyboardButton } from "./keyboard-button"
 
-const polaroids = [
+// ── Desktop: 6 large polaroids ────────────────────────────────
+const desktopPolaroids = [
   {
     id: 1,
     caption: "building things",
@@ -27,7 +29,7 @@ const polaroids = [
     id: 3,
     caption: "philly, pa",
     rotate: 6,
-    x: "57%",
+    x: "56%",
     y: "3%",
     gradient: "linear-gradient(135deg, #1a0d0d 0%, #2e1a1a 55%, #180a0a 100%)",
     delay: 0.14,
@@ -37,7 +39,7 @@ const polaroids = [
     caption: "hardware & code",
     rotate: -3,
     x: "5%",
-    y: "53%",
+    y: "52%",
     gradient: "linear-gradient(135deg, #0d2a1b 0%, #1a3d28 55%, #0a1f15 100%)",
     delay: 0.28,
   },
@@ -54,91 +56,209 @@ const polaroids = [
     id: 6,
     caption: "crocheting szn",
     rotate: -4.5,
-    x: "61%",
+    x: "58%",
     y: "50%",
     gradient: "linear-gradient(135deg, #0a1a2e 0%, #112540 55%, #081520 100%)",
     delay: 0.24,
   },
 ]
 
-const POLAROID_W = 190
-const POLAROID_H = 148
+// ── Mobile: 3 compact polaroids ───────────────────────────────
+const mobilePolaroids = [
+  {
+    id: 1,
+    caption: "building things",
+    rotate: -5,
+    x: "0%",
+    y: "5%",
+    gradient: "linear-gradient(135deg, #1a1a2e 0%, #16213e 55%, #0f3460 100%)",
+    delay: 0.10,
+  },
+  {
+    id: 2,
+    caption: "penn m&t '27",
+    rotate: 3,
+    x: "30%",
+    y: "0%",
+    gradient: "linear-gradient(135deg, #2d1b0e 0%, #3d2512 55%, #1a0f06 100%)",
+    delay: 0.16,
+  },
+  {
+    id: 3,
+    caption: "philly, pa",
+    rotate: -2.5,
+    x: "57%",
+    y: "7%",
+    gradient: "linear-gradient(135deg, #0d2a1b 0%, #1a3d28 55%, #0a1f15 100%)",
+    delay: 0.12,
+  },
+]
 
+// ── Sizes ──────────────────────────────────────────────────────
+const DW = 275   // desktop polaroid width
+const DH = 212   // desktop photo height
+
+const MW = 132   // mobile polaroid width
+const MH = 100   // mobile photo height
+
+// ── Magnetic button wrapper ────────────────────────────────────
+function MagneticWrap({ children }: { children: React.ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const x = useMotionValue(0)
+  const y = useMotionValue(0)
+  const sx = useSpring(x, { stiffness: 280, damping: 22 })
+  const sy = useSpring(y, { stiffness: 280, damping: 22 })
+
+  const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const r = ref.current?.getBoundingClientRect()
+    if (!r) return
+    x.set((e.clientX - r.left - r.width / 2) * 0.30)
+    y.set((e.clientY - r.top - r.height / 2) * 0.30)
+  }
+  const onLeave = () => { x.set(0); y.set(0) }
+
+  return (
+    <motion.div
+      ref={ref}
+      onMouseMove={onMove}
+      onMouseLeave={onLeave}
+      style={{ x: sx, y: sy }}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
+// ── Desktop cluster ────────────────────────────────────────────
+function DesktopCluster() {
+  return (
+    <div
+      className="relative hidden shrink-0 lg:block"
+      style={{ width: 740, height: 640 }}
+    >
+      {desktopPolaroids.map((p) => (
+        <motion.div
+          key={p.id}
+          className="absolute cursor-default select-none"
+          style={{ left: p.x, top: p.y, width: DW, zIndex: p.id }}
+          initial={{ opacity: 0, rotate: p.rotate - 10, y: 36 }}
+          animate={{ opacity: 1, rotate: p.rotate, y: 0 }}
+          transition={{ duration: 0.65, delay: p.delay, ease: "easeOut" }}
+          whileHover={{ scale: 1.07, zIndex: 10, transition: { duration: 0.15 } }}
+        >
+          <div
+            className="shadow-[0_24px_64px_rgba(0,0,0,0.78)]"
+            style={{ background: "#fff", padding: "12px", paddingBottom: "52px", borderRadius: "2px" }}
+          >
+            <div
+              style={{
+                width: DW - 24,
+                height: DH,
+                background: p.gradient,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                borderRadius: "1px",
+              }}
+            >
+              <Camera size={34} style={{ color: "rgba(255,255,255,0.07)" }} />
+            </div>
+            <p
+              style={{
+                fontFamily: "Georgia,'Times New Roman',serif",
+                fontStyle: "italic",
+                fontSize: "12px",
+                color: "#555",
+                textAlign: "center",
+                marginTop: "12px",
+                lineHeight: 1,
+              }}
+            >
+              {p.caption}
+            </p>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  )
+}
+
+// ── Mobile cluster ─────────────────────────────────────────────
+function MobileCluster() {
+  return (
+    <div
+      className="relative mx-auto block shrink-0 lg:hidden"
+      style={{ width: 340, height: 220 }}
+    >
+      {mobilePolaroids.map((p) => (
+        <motion.div
+          key={p.id}
+          className="absolute cursor-default select-none"
+          style={{ left: p.x, top: p.y, width: MW, zIndex: p.id }}
+          initial={{ opacity: 0, rotate: p.rotate - 8, y: 20 }}
+          animate={{ opacity: 1, rotate: p.rotate, y: 0 }}
+          transition={{ duration: 0.6, delay: p.delay, ease: "easeOut" }}
+          whileHover={{ scale: 1.05, zIndex: 10, transition: { duration: 0.15 } }}
+        >
+          <div
+            className="shadow-[0_12px_36px_rgba(0,0,0,0.65)]"
+            style={{ background: "#fff", padding: "8px", paddingBottom: "36px", borderRadius: "2px" }}
+          >
+            <div
+              style={{
+                width: MW - 16,
+                height: MH,
+                background: p.gradient,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                borderRadius: "1px",
+              }}
+            >
+              <Camera size={22} style={{ color: "rgba(255,255,255,0.07)" }} />
+            </div>
+            <p
+              style={{
+                fontFamily: "Georgia,'Times New Roman',serif",
+                fontStyle: "italic",
+                fontSize: "10px",
+                color: "#555",
+                textAlign: "center",
+                marginTop: "9px",
+                lineHeight: 1,
+              }}
+            >
+              {p.caption}
+            </p>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  )
+}
+
+// ── Keyword highlight span ────────────────────────────────────
+function KW({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="keyword-highlight">
+      {children}
+    </span>
+  )
+}
+
+// ── Hero section ───────────────────────────────────────────────
 export function HeroSection() {
   return (
     <section className="relative flex min-h-screen items-center">
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-6">
-        <div className="flex flex-col gap-16 lg:flex-row lg:items-center lg:gap-16">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-24 lg:py-0">
+        <div className="flex flex-col items-center gap-12 lg:flex-row lg:items-center lg:gap-8 xl:gap-16">
 
-          {/* ── Polaroid cluster ─────────────────────────────────────── */}
-          <motion.div
-            className="relative mx-auto shrink-0"
-            style={{ width: 500, height: 460 }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.4 }}
-          >
-            {polaroids.map((p) => (
-              <motion.div
-                key={p.id}
-                className="absolute cursor-default select-none"
-                style={{
-                  left: p.x,
-                  top: p.y,
-                  width: POLAROID_W,
-                  zIndex: p.id,
-                }}
-                initial={{ opacity: 0, rotate: p.rotate - 10, y: 32 }}
-                animate={{ opacity: 1, rotate: p.rotate, y: 0 }}
-                transition={{ duration: 0.6, delay: p.delay, ease: "easeOut" }}
-                whileHover={{ scale: 1.06, zIndex: 10, transition: { duration: 0.15 } }}
-              >
-                {/* Polaroid frame */}
-                <div
-                  className="shadow-[0_16px_48px_rgba(0,0,0,0.7)]"
-                  style={{
-                    background: "#ffffff",
-                    padding: "10px",
-                    paddingBottom: "44px",
-                    borderRadius: "2px",
-                  }}
-                >
-                  {/* Photo area */}
-                  <div
-                    style={{
-                      width: POLAROID_W - 20,
-                      height: POLAROID_H,
-                      background: p.gradient,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      borderRadius: "1px",
-                    }}
-                  >
-                    <Camera size={30} style={{ color: "rgba(255,255,255,0.08)" }} />
-                  </div>
+          {/* Polaroid cluster — mobile top, desktop left */}
+          <MobileCluster />
+          <DesktopCluster />
 
-                  {/* Caption */}
-                  <p
-                    style={{
-                      fontFamily: "Georgia, 'Times New Roman', serif",
-                      fontStyle: "italic",
-                      fontSize: "11.5px",
-                      color: "#555",
-                      textAlign: "center",
-                      marginTop: "10px",
-                      lineHeight: 1,
-                    }}
-                  >
-                    {p.caption}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* ── Text content ─────────────────────────────────────────── */}
-          <div className="flex flex-col gap-7 lg:max-w-lg">
+          {/* Text content */}
+          <div className="flex w-full flex-col gap-7 text-center lg:max-w-xl lg:text-left">
 
             {/* Eyebrow */}
             <motion.p
@@ -152,7 +272,7 @@ export function HeroSection() {
 
             {/* Headline */}
             <motion.h1
-              className="font-heading text-6xl font-bold tracking-tight text-foreground md:text-7xl"
+              className="whitespace-nowrap font-heading text-6xl font-bold tracking-tight text-foreground sm:text-7xl lg:text-8xl"
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.45 }}
@@ -163,43 +283,57 @@ export function HeroSection() {
               </span>
             </motion.h1>
 
-            {/* Body */}
+            {/* Bio */}
             <motion.div
-              className="flex flex-col gap-4 text-base leading-relaxed text-muted-foreground"
+              className="flex flex-col gap-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.55 }}
             >
-              <p>
-                Freshman at Penn studying computer engineering and finance. There
-                are endless problems worth solving — tech is how you build a
-                solution, business is how you reach people, so I&apos;m pursuing both.
+              {/* Lead tagline — the brand statement */}
+              <p className="text-xl font-semibold text-foreground sm:text-2xl">
+                Inventing my corner of the world,{" "}
+                <span className="italic text-primary">with pizzazz.</span>
               </p>
-              <p>
-                Right now that looks like chip design, blockchain, and
-                high-frequency trading. Outside of that: crocheting, messing
-                with sensors and gadgets, volleyball, and meeting new people.
+
+              {/* Body */}
+              <p className="text-base leading-relaxed text-muted-foreground lg:text-lg">
+                Freshman at Penn — <KW>computer engineering</KW> + <KW>finance</KW>.
+                Hardware gets you to the metal; business gets you to people.
+                Right now that means{" "}
+                <KW>RISC-V core design</KW>,{" "}
+                <KW>zero-knowledge proofs</KW>, and{" "}
+                <KW>latency-critical trading systems</KW>.
+              </p>
+
+              <p className="text-base leading-relaxed text-muted-foreground lg:text-lg">
+                Also <KW>crocheting</KW>. Turns out the same brain
+                that loves finite state machines loves yarn tension.
               </p>
             </motion.div>
 
             {/* CTAs */}
             <motion.div
-              className="flex flex-wrap items-center gap-3"
+              className="flex flex-wrap items-center justify-center gap-4 lg:justify-start"
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.65 }}
             >
-              <KeyboardButton href="/projects" variant="default" size="md">
-                See my work
-              </KeyboardButton>
-              <KeyboardButton href="/about" variant="ghost" size="md">
-                Let&apos;s connect
-              </KeyboardButton>
+              <MagneticWrap>
+                <KeyboardButton href="/projects" variant="default" size="md">
+                  See my work
+                </KeyboardButton>
+              </MagneticWrap>
+              <MagneticWrap>
+                <KeyboardButton href="/about" variant="ghost" size="md">
+                  Let&apos;s connect
+                </KeyboardButton>
+              </MagneticWrap>
             </motion.div>
 
-            {/* Scroll hint */}
+            {/* Scroll hint — hide on mobile */}
             <motion.div
-              className="flex items-center gap-2 text-muted-foreground/40"
+              className="hidden items-center gap-2 text-muted-foreground/40 lg:flex"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 1.1 }}

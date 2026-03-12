@@ -28,6 +28,22 @@
 // ── SEARCH FOR ✏️ ────────────────────────────────────────────
 //   Every editable field has a ✏️ comment. Search for it
 //   to jump to each piece of content you might want to update.
+//
+// ── MEDIA FOLDER GUIDE ───────────────────────────────────────
+//   All media lives in /public/media/ (served at /media/...)
+//
+//   public/media/
+//   ├── projects/
+//   │   ├── [slug]-logo.png       ← square logo (256×256 ideal)
+//   │   └── screenshots/
+//   │       └── [slug]-[name].png ← project screenshots
+//   ├── photos/
+//   │   ├── polaroids/            ← photos for the hero polaroids
+//   │   └── about/                ← photos for the about page
+//   ├── journal/                  ← cover images for journal posts
+//   └── misc/                     ← anything else (awards, press, etc.)
+//
+//   To use a logo: set logo: "/media/projects/[slug]-logo.png"
 // ============================================================
 
 export interface Project {
@@ -98,6 +114,7 @@ export const projects: Project[] = [
       "Active development — shipping incrementally",
     ],
     imagePlaceholder: "Interface mockup or early screenshot",
+    logo: "/media/projects/nomi-logo.png",
     links: [
       { label: "GitHub", href: "#", icon: "github" },
     ],
@@ -139,6 +156,7 @@ export const projects: Project[] = [
       "Ongoing: refining the insight generation model",
     ],
     imagePlaceholder: "App screenshots or hardware prototype photo",
+    logo: "/media/projects/beet-logo.png",
     links: [
       { label: "GitHub", href: "#", icon: "github" },
     ],
@@ -185,6 +203,7 @@ export const projects: Project[] = [
       "Estimated hardware cost ~$100 vs. $90,000/sq mile for commercial systems",
     ],
     imagePlaceholder: "Photo with Police Chief Terry Sult or the GuardianShot device",
+    logo: "/media/projects/guardianshot-logo.png",
     links: [
       { label: "GitHub", href: "https://github.com/peanutz28/guardianshot", icon: "github" },
     ],
@@ -227,6 +246,7 @@ export const projects: Project[] = [
       "Planning voice activity detection (VAD) as next FPGA module",
     ],
     imagePlaceholder: "PCB photo or polar pattern measurement plot",
+    logo: "/media/projects/supermic-logo.png",
     links: [
       { label: "GitHub", href: "#", icon: "github" },
     ],

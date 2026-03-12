@@ -23,7 +23,7 @@ const navLinks = [
 export function Footer() {
   return (
     <footer className="relative border-t border-border/30">
-      <div className="mx-auto max-w-7xl px-6 py-20">
+      <div className="mx-auto max-w-7xl px-6 py-12 md:py-20">
         <motion.div
           className="grid gap-12 md:grid-cols-3"
           initial={{ opacity: 0, y: 20 }}
@@ -97,9 +97,25 @@ export function Footer() {
           </div>
         </motion.div>
 
+        {/* Truman Show quote */}
+        <motion.div
+          className="mt-14 text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+        >
+          <p className="font-mono text-sm italic tracking-wide text-muted-foreground/60">
+            &ldquo;And in case I don&apos;t see ya — good afternoon, good evening, and good night.&rdquo;
+          </p>
+          <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.35em] text-muted-foreground/40">
+            — Truman Burbank
+          </p>
+        </motion.div>
+
         {/* Bottom bar */}
         <motion.div
-          className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-border/20 pt-8 md:flex-row"
+          className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-border/20 pt-6 md:flex-row"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -108,7 +124,7 @@ export function Footer() {
           <p className="font-mono text-[10px] text-muted-foreground/50">
             © 2026 Ria.
           </p>
-          
+
           {/* Tiny peanut easter egg */}
           <div className="group flex items-center gap-2 font-mono text-[10px] text-muted-foreground/30 transition-colors hover:text-muted-foreground/50">
             <span>crafted with</span>
